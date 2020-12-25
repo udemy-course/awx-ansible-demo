@@ -1,0 +1,9 @@
+---
+- hosts: ios
+  gather_facts: no
+  tasks:
+    - include_role:
+        name: cisco_ios
+    - name: print running cfg
+      debug:
+        var: running_cfg
