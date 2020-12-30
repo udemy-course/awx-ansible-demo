@@ -1,0 +1,19 @@
+---
+- hosts: linux
+  gather_facts: no
+  vars:
+    version: 2
+    timeout: 5s
+  tasks:
+    - name: Create a directory if it does not exist
+      file:
+        path: ~/telegraf
+        state: directory
+        mode: "0755"
+    - name: Generate template
+      template:
+        src: "telegraf.j2"
+        dest: "~/telegraf/{{ inventory_hostname }}_{{ index }}.cfg"
+      loop: "{{ range(0, 50)|list }}"
+      loop_control:
+        loop_var: index

@@ -1,3 +1,10 @@
 [ios]
 51.137.78.63
 51.144.175.30
+
+[linux]
+host1 ansible_host=172.21.58.210
+
+[linux:vars]
+ansible_user=vagrant
+ansible_ssh_pass=vagrant
